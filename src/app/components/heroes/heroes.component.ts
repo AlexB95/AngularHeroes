@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-heroes',
@@ -6,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroesComponent implements OnInit {
 
-  constructor() { }
+  heroes:any;
+
+  constructor(private http: HttpClient) {
+    this.getJSON().subscribe(data => {
+      this.heroes = data['Heroes'];
+    });
+  }
+
+  getJSON() {
+    return this.http.get('assets/heroes.json')
+  }
 
   ngOnInit() {
   }

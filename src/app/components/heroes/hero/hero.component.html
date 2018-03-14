@@ -1,0 +1,19 @@
+<section class="jumbotron ">
+  <button type="button" class="btn btn-dark " (click)="backClicked()">Back</button>
+  <div class="container">
+    <h1 class="jumbotron-heading text-center">{{hero.name}}</h1>
+  </div>
+</section>
+<img class="rounded mx-auto img-fluid d-block" [src]="hero.img" [alt]="hero.name">
+<div class="text-center jumbotron">
+  <p>{{hero.description}}</p>
+  <div class="pl-5 text-left">
+    <h3>Abilities</h3>
+      <ul>
+        <li *ngFor="let power of hero.superpowers;">
+          {{power}}
+        </li>
+      </ul>
+    </div>
+</div>
+  

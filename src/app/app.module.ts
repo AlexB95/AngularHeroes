@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { RouterLinkActive } from '@angular/router';
@@ -10,6 +10,7 @@ import { NavbarComponent } from './share/navbar/navbar.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { AboutComponent } from './components/about/about.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { HeroComponent } from './components/heroes/hero/hero.component';
 const appRoutes: Routes = [
   {
     path: 'home',
@@ -22,9 +23,13 @@ const appRoutes: Routes = [
     data: { title: 'Heroes List' }
   },
   {
+    path: 'heroes/:name',
+    component: HeroComponent
+  },
+  {
     path: 'about',
     component: AboutComponent,
-    data: { title: 'Heroes List' }
+    data: { title: 'About' }
   },
   {
     path: '',
@@ -41,10 +46,12 @@ const appRoutes: Routes = [
     NavbarComponent,
     HeroesComponent,
     AboutComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HeroComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes
     )
